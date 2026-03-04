@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabores del Mundo | Comidas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        /* Navegación */
+        nav {
+            background-color: #fff;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #ff6b6b;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff8e53;
+        }
+
+        /* Contenedor principal */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        /* Secciones */
+        section {
+            margin-bottom: 3rem;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #ff6b6b;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+            margin: 0.5rem auto;
+            border-radius: 2px;
+        }
+
+        /* Grid de tarjetas */
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .food-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .food-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+
+        .food-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .food-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .food-card h3 {
+            color: #ff6b6b;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .food-card p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .price {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        /* Sección destacados */
+        .featured {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .featured-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .featured img {
+            width: 50%;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .featured-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .featured-text h3 {
+            color: #ff6b6b;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: transform 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Formulario de contacto */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #ff6b6b;
+            font-weight: 600;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #f0f0f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #ff6b6b;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .social-links {
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .featured-content {
+                flex-direction: column;
+            }
+            
+            .featured img {
+                width: 100%;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🍽️ Sabores del Mundo</h1>
+        <p>Descubre los platos más deliciosos de nuestra cocina</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#menu">Menú</a></li>
+            <li><a href="#destacados">Destacados</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <!-- Sección de inicio -->
+        <section id="inicio">
+            <h2>Bienvenidos</h2>
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <p style="font-size: 1.2rem; color: #666;">En Sabores del Mundo te ofrecemos una experiencia culinaria única, combinando ingredientes frescos con recetas tradicionales y un toque moderno. Nuestros chefs preparan cada plato con pasión y dedicación.</p>
+            </div>
+        </section>
+
+        <!-- Sección del menú -->
+        <section id="menu">
+            <h2>Nuestro Menú</h2>
+            <div class="food-grid">
+                <!-- Tarjeta 1 - Pizza -->
+                <div class="food-card">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Pizza Margherita">
+                    <div class="card-content">
+                        <h3>Pizza Margherita</h3>
+                        <p>Deliciosa pizza con salsa de tomate, mozzarella fresca, albahaca y un toque de aceite de oliva.</p>
+                        <span class="price">$14.99</span>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 2 - Hamburguesa -->
+                <div class="food-card">
+                    <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Hamburguesa">
+                    <div class="card-content">
+                        <h3>Hamburguesa Clásica</h3>
+                        <p>Jugosa carne de res, queso cheddar, lechuga, tomate, cebolla y nuestra salsa especial.</p>
+                        <span class="price">$12.99</span>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 3 - Pasta -->
+                <div class="food-card">
+                    <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Pasta">
+                    <div class="card-content">
+                        <h3>Pasta Alfredo</h3>
+                        <p>Pasta fettuccine con salsa cremosa Alfredo, pollo a la parrilla y queso parmesano.</p>
+                        <span class="price">$15.99</span>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 4 - Sushi -->
+                <div class="food-card">
+                    <img src="https://images.unsplash.com/photo-1579871494447-9811cf80d66c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Sushi">
+                    <div class="card-content">
+                        <h3>Sushi Roll</h3>
+                        <p>Variedad de rollos de sushi con pescado fresco, arroz, algas y vegetales.</p>
+                        <span class="price">$18.99</span>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 5 - Ensalada -->
+                <div class="food-card">
+                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Ensalada">
+                    <div class="card-content">
+                        <h3>Ensalada César</h3>
+                        <p>Lechuga romana, pollo a la parrilla, crutones, queso parmesano y aderezo César.</p>
+                        <span class="price">$10.99</span>
+                    </div>
+                </div>
+
+                <!-- Tarjeta 6 - Postre -->
+                <div class="food-card">
+                    <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Postre">
+                    <div class="card-content">
+                        <h3>Cheesecake</h3>
+                        <p>Suave cheesecake con base de galleta, cubierto con salsa de frutos rojos.</p>
+                        <span class="price">$7.99</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección destacados -->
+        <section id="destacados">
+            <h2>Plato Destacado</h2>
+            <div class="featured">
+                <div class="featured-content">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Plato destacado">
+                    <div class="featured-text">
+                        <h3>Parrillada Argentina</h3>
+                        <p>Nuestro plato estrella incluye cortes seleccionados de carne, chorizo, morcilla, pollo a la parrilla, acompañado de papas andinas, chimichurri casero y vegetales asados. Una experiencia única para los amantes de la carne.</p>
+                        <p><strong>Incluye:</strong> 2 acompañamientos y una bebida de cortesía.</p>
+                        <a href="#contacto" class="btn">Reservar ahora</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de contacto -->
+        <section id="contacto">
+            <h2>Contacto y Reservas</h2>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="nombre">Nombre completo:</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="personas">Número de personas:</label>
+                        <select id="personas" name="personas">
+                            <option value="1">1 persona</option>
+                            <option value="2">2 personas</option>
+                            <option value="3">3 personas</option>
+                            <option value="4">4 personas</option>
+                            <option value="5">5+ personas</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fecha">Fecha de reserva:</label>
+                        <input type="date" id="fecha" name="fecha" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="mensaje">Mensaje o requerimientos especiales:</label>
+                        <textarea id="mensaje" name="mensaje" placeholder="Alergias, preferencias, ocasión especial..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn" style="width: 100%;">Enviar reserva</button>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="social-links">
+            <a href="#">📘 Facebook</a>
+            <a href="#">📷 Instagram</a>
+            <a href="#">🐦 Twitter</a>
+            <a href="#">📞 WhatsApp</a>
+        </div>
+        <p>&copy; 2024 Sabores del Mundo. Todos los derechos reservados.</p>
+        <p>📍 Dirección: Av. Principal 123, Ciudad | 📱 Tel: (123) 456-7890</p>
+    </footer>
+</body>
+</html>

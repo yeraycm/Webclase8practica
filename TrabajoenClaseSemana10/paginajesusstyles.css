@@ -1,0 +1,110 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: #050816;
+  color: #fff;
+}
+
+.section {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.section h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.section p {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.creators {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 40px 60px;
+}
+
+.card {
+  background: #0c1022;
+  padding: 15px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  background: #111633;
+}
+
+.card img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.card .info {
+  display: flex;
+  flex-direction: column;
+}
+
+.card .info span {
+  font-size: 13px;
+  color: gold;
+}
+
+.explore {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  padding: 40px 60px;
+}
+
+.explore-card {
+  background: #0c1022;
+  border-radius: 15px;
+  padding: 15px;
+  transition: 0.3s;
+}
+
+.explore-card:hover {
+  transform: scale(1.03);
+}
+
+.grid-images {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.grid-images img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.explore-footer {
+  text-align: center;
+}
+
+.explore-footer span {
+  display: block;
+  color: gold;
+  font-size: 13px;
+}
+
+@media (max-width: 600px) {
+  .section h1 {
+    font-size: 26px;
+  }
+}

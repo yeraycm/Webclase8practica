@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NFTis - Marketplace de NFTs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: white;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            border-bottom: 1px solid #333;
+        }
+
+        .nftis-logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        .nftis-logo span {
+            color: white;
+            font-size: 16px;
+            font-weight: normal;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-add {
+            background: #ffd700;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn-downloads {
+            background: transparent;
+            color: white;
+            border: 1px solid #ffd700;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            border-bottom: 1px solid #333;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ffd700;
+        }
+
+        .logo span {
+            color: white;
+            font-size: 18px;
+            font-weight: normal;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .search-social {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: #1a1a1a;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+        .search-box input {
+            background: transparent;
+            border: none;
+            color: white;
+            outline: none;
+        }
+
+        .search-box span {
+            color: #ffd700;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-icons span {
+            cursor: pointer;
+            color: #ffd700;
+        }
+
+        .top-sellers {
+            padding: 40px 50px;
+            border-bottom: 1px solid #333;
+        }
+
+        .top-sellers h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #ffd700;
+        }
+
+        .top-sellers p {
+            color: #999;
+            margin-bottom: 30px;
+        }
+
+        .sellers-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .seller-card {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .seller-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #ffd700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: black;
+            overflow: hidden;
+        }
+
+        .seller-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .seller-info h4 {
+            margin-bottom: 5px;
+            color: white;
+        }
+
+        .seller-info p {
+            margin: 0;
+            color: #ffd700;
+            font-weight: bold;
+        }
+
+        .hero-section {
+            display: flex;
+            padding: 80px 50px;
+            gap: 50px;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            color: #ffd700;
+        }
+
+        .hero-content p {
+            color: #999;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .hero-image {
+            flex: 1;
+            border-radius: 10px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            max-height: 400px;
+            border-radius: 10px;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .read-more-btn {
+            background: #ffd700;
+            color: black;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="nftis-logo">
+            NFTis<span>-Tema multipropósito para WordPress Elementor creado de NFT</span>
+        </div>
+        <div class="cta-buttons">
+            <button class="btn-add">añadir a la cesta</button>
+            <button class="btn-downloads">Obtén descargas ilimitadas</button>
+        </div>
+    </div>
+
+    <header class="main-header">
+        <div class="logo">
+            nfti's <span>CREATE & SELL</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Pages</a></li>
+                <li><a href="#">NFT Marketplace</a></li>
+                <li><a href="#">Activity</a></li>
+                <li><a href="#">Blog</a></li>
+            </ul>
+        </nav>
+        <div class="search-social">
+            <div class="search-box">
+                <input type="text" placeholder="Search ...">
+                <span>🔍</span>
+            </div>
+            <div class="social-icons">
+                <span>📘</span>
+                <span>📷</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="top-sellers">
+        <h2># Top Sellers</h2>
+        <p>Contrary to popular belief, Ipsum is not simply text.</p>
+        
+        <div class="sellers-grid">
+            <!-- Doodles_4 con imagen -->
+            <div class="seller-card">
+                <div class="seller-avatar">
+                    <img src="file:///C:/Users/noeli/Downloads/doodle.jpg" alt="Doodles_4">
+                </div>
+                <div class="seller-info">
+                    <h4>@Doodles_4</h4>
+                    <p>LS BNB</p>
+                </div>
+            </div>
+
+            <!-- Fox_Fram con imagen -->
+            <div class="seller-card">
+                <div class="seller-avatar">
+                    <img src="file:///C:/Users/noeli/Downloads/fox.jpg" alt="Fox_Fram">
+                </div>
+                <div class="seller-info">
+                    <h4>@Fox_Fram</h4>
+                    <p>2.5 BNB</p>
+                </div>
+            </div>
+
+            <!-- Cools_55 con imagen -->
+            <div class="seller-card">
+                <div class="seller-avatar">
+                    <img src="file:///C:/Users/noeli/Downloads/cools.jpg" alt="Cools_55">
+                </div>
+                <div class="seller-info">
+                    <h4>@Cools_55</h4>
+                    <p>3.2 ETH</p>
+                </div>
+            </div>
+
+            <!-- Digita-22 con imagen -->
+            <div class="seller-card">
+                <div class="seller-avatar">
+                    <img src="file:///C:/Users/noeli/Downloads/digita-22.jpg" alt="Digita-22">
+                </div>
+                <div class="seller-info">
+                    <h4>@Digita-22</h4>
+                    <p>LS BNB</p>
+                </div>
+            </div>
+
+            <!-- Mamie-Bar con imagen -->
+            <div class="seller-card">
+                <div class="seller-avatar">
+                    <img src="file:///C:/Users/noeli/Downloads/mamie-bar.jpg" alt="Mamie-Bar">
+                </div>
+                <div class="seller-info">
+                    <h4>@Mamie-Bar</h4>
+                    <p>LS BNB</p>
+                </div>
+            </div>
+
+            <!-- Karla_Sharp con imagen -->
+            <div class="seller-card">
+                <div class="seller-avatar">
+                    <img src="file:///C:/Users/noeli/Downloads/karla-sharp.jpg" alt="Karla_Sharp">
+                </div>
+                <div class="seller-info">
+                    <h4>@Karla_Sharp</h4>
+                    <p>2.5 ETH</p>
+                </div>
+            </div>
+
+            <!-- Clae_Bas con imagen -->
+            <div class="seller-card">
+                <div class="seller-avatar">
+                    <img src="file:///C:/Users/noeli/Downloads/clae-bas.jpg" alt="Clae_Bas">
+                </div>
+                <div class="seller-info">
+                    <h4>@Clae_Bas</h4>
+                    <p>3.2 BNB</p>
+                </div>
+            </div>
+
+            <!-- Fred_02 con imagen -->
+            <div class="seller-card">
+                <div class="seller-avatar">
+                    <img src="file:///C:/Users/noeli/Downloads/fred-02.jpg" alt="Fred_02">
+                </div>
+                <div class="seller-info">
+                    <h4>@Fred_02</h4>
+                    <p>5 ETH</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Discover Digital Art & Collect NFTs</h1>
+            <p>It is a long established fact that a reader will be distracted by the content of a page when looking at its layout.</p>
+            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that.</p>
+            <button class="read-more-btn">Read More</button>
+        </div>
+        <div class="hero-image">
+            <img src="file:///C:/Users/noeli/Downloads/dios.png" alt="NFT Art">
+        </div>
+    </section>
+</body>
+</html>

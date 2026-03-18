@@ -1,0 +1,402 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: #050312;
+  color: white;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* NAVBAR */
+.navbar {
+  width: 100%;
+  padding: 20px 0;
+  background: #2d3b52;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 32px;
+  font-weight: bold;
+  color: #f4c400;
+}
+
+.menu {
+  display: flex;
+  gap: 28px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.menu a:hover {
+  color: #f4c400;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  min-height: 760px;
+  background:
+    radial-gradient(circle at 67% 34%, rgba(255, 196, 0, 0.18), transparent 28%),
+    linear-gradient(90deg, #07041c 0%, #0a0722 55%, #07041c 100%);
+  overflow: hidden;
+}
+
+.hero-wrapper {
+  min-height: 760px;
+  position: relative;
+}
+
+.hero-slider {
+  position: relative;
+  width: 100%;
+  height: 760px;
+}
+
+.slider-glow {
+  position: absolute;
+  width: 430px;
+  height: 430px;
+  background: rgba(255, 196, 0, 0.18);
+  border-radius: 50%;
+  filter: blur(90px);
+  right: 220px;
+  top: 130px;
+  z-index: 0;
+}
+
+.slide-group {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.9s ease, visibility 0.9s ease;
+}
+
+.slide-group.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* TEXTO DEL SLIDER */
+.slide-text {
+  position: absolute;
+  left: 120px;
+  top: 210px;
+  z-index: 5;
+  opacity: 0;
+  transform: translateY(45px);
+}
+
+.slide-group.active .slide-text {
+  animation: textEntrance 1s ease forwards;
+}
+
+.hero-title {
+  font-size: 73px;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: -1px;
+  line-height: 82px;
+  text-align: left;
+  white-space: nowrap;
+  margin: 0;
+}
+
+.hero-btn {
+  display: inline-block;
+  margin-top: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  opacity: 0;
+}
+
+.slide-group.active .hero-btn {
+  animation: buttonEntrance 1s ease forwards;
+  animation-delay: 0.35s;
+}
+
+/* IMÁGENES DEL HERO */
+.slide-img {
+  position: absolute;
+  overflow: hidden;
+  box-shadow: 0 22px 45px rgba(0, 0, 0, 0.35);
+}
+
+.slide-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.back-img {
+  width: 300px;
+  height: 420px;
+  right: 180px;
+  bottom: 105px;
+  border-radius: 150px 150px 0 0;
+  transform: rotate(8deg) translateY(30px);
+  opacity: 0;
+  z-index: 1;
+}
+
+.front-img {
+  width: 340px;
+  height: 500px;
+  right: 310px;
+  top: 120px;
+  border-radius: 170px 170px 0 0;
+  transform: translateY(30px);
+  opacity: 0;
+  z-index: 2;
+}
+
+.slide-group.active .front-img {
+  animation: frontImageEntrance 1s ease forwards;
+  animation-delay: 0.15s;
+}
+
+.slide-group.active .back-img {
+  animation: backImageEntrance 1s ease forwards;
+  animation-delay: 0.3s;
+}
+
+/* TARJETA AMARILLA */
+.count-card {
+  position: relative;
+  margin: -70px auto 80px;
+  width: 100%;
+  max-width: 920px;
+  background: #f4c400;
+  color: #111;
+  border-radius: 24px;
+  padding: 42px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 12px 12px 0 rgba(135, 105, 0, 0.45);
+  z-index: 10;
+}
+
+.count-left h2 {
+  font-size: 46px;
+  margin-bottom: 10px;
+}
+
+.count-left p {
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.expired {
+  color: white;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.avatars {
+  display: flex;
+  align-items: center;
+}
+
+.avatars img {
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #f4c400;
+  margin-left: -12px;
+}
+
+.avatars img:first-child {
+  margin-left: 0;
+}
+
+/* TOP CREATORS */
+.section {
+  padding: 30px 0 90px;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 52px;
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: #ddd;
+  margin-bottom: 45px;
+}
+
+.creators-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+
+.creator-card {
+  background: rgba(18, 13, 40, 0.95);
+  border-radius: 18px;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.creator-card img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.creator-info h3 {
+  font-size: 28px;
+  margin-bottom: 4px;
+}
+
+.creator-info span {
+  color: #f4c400;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* ANIMACIONES */
+@keyframes textEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(45px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes buttonEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes frontImageEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes backImageEntrance {
+  from {
+    opacity: 0;
+    transform: rotate(8deg) translateY(45px) scale(0.96);
+  }
+  to {
+    opacity: 0.9;
+    transform: rotate(8deg) translateY(0) scale(1);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .slide-text {
+    left: 40px;
+    top: 140px;
+  }
+
+  .hero-title {
+    font-size: 52px;
+    line-height: 60px;
+    white-space: normal;
+  }
+
+  .front-img {
+    width: 250px;
+    height: 360px;
+    right: 120px;
+    top: 240px;
+  }
+
+  .back-img {
+    width: 220px;
+    height: 300px;
+    right: 20px;
+    bottom: 80px;
+  }
+
+  .count-card {
+    flex-direction: column;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .creators-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .slide-text {
+    left: 20px;
+    top: 110px;
+  }
+
+  .hero-title {
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  .front-img {
+    width: 190px;
+    height: 270px;
+    right: 80px;
+    top: 320px;
+  }
+
+  .back-img {
+    width: 150px;
+    height: 210px;
+    right: 10px;
+    bottom: 90px;
+  }
+
+  .creators-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .count-left h2 {
+    font-size: 34px;
+  }
+}
